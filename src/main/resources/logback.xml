@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 例如：每天生成一个日志文件，保存30天的日志文件。 -->
+<configuration> 
+  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender"> 
+    
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy"> 
+      <fileNamePattern>${catalina.base}/logs/log4j/logFile.%d{yyyy-MM-dd}.log</fileNamePattern> 
+      <maxHistory>365</maxHistory>  
+    </rollingPolicy> 
+ 
+    <encoder> 
+      <pattern>%d{HH:mm:ss.SSS} - %-5level - %logger{26} - %msg%n</pattern> 
+      <charset>UTF-8</charset>
+    </encoder> 
+  </appender>
+ 	<logger name="com.distribution.dao" level="DEBUG"/><!-- 显示sql语句 -->
+  <root level="info"> 
+    <appender-ref ref="FILE" /> 
+  </root> 
+</configuration>
