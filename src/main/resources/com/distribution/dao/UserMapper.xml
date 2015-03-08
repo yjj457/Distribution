@@ -3,11 +3,11 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.distribution.dao.UserMapper">  
   <select id="getUserLevel" parameterType="String" resultType="UserEntity">
-	select usr_nm,
-		   usr_pwd,
-		   usr_access
+	select user_nm,
+		   user_pwd,
+		   user_access
 	from user_info
-	where usr_nm=#{username}
+	where user_nm=#{username}
   </select>
   <!-- 参数还没写 -->
 </mapper>

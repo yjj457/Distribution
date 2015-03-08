@@ -71,7 +71,7 @@ public class LoginLogoutController {
 	public String testmybatis() {
 		logger.info("111");
 		UserEntity userEneity = userMapper.getUserLevel("yjj");
-		System.out.println(userEneity.getUsr_access());
+		System.out.println(userEneity.getUser_access());
 		return "deniedpage";
 
 	}

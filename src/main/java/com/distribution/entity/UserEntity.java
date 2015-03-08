@@ -1,27 +1,27 @@
 package com.distribution.entity;
 
 public class UserEntity {
-	private String usr_nm;
-	private String usr_pwd;
-	private int usr_access;
-	public String getUsr_nm() {
-		return usr_nm;
+	private String user_nm;
+	private String user_pwd;
+	private int user_access;
+	public String getUser_nm() {
+		return user_nm;
 	}
-	public void setUsr_nm(String usr_nm) {
-		this.usr_nm = usr_nm;
+	public void setUser_nm(String user_nm) {
+		this.user_nm = user_nm;
 	}
-	public String getUsr_pwd() {
-		return usr_pwd;
+	public String getUser_pwd() {
+		return user_pwd;
 	}
-	public void setUsr_pwd(String usr_pwd) {
-		this.usr_pwd = usr_pwd;
+	public void setUser_pwd(String user_pwd) {
+		this.user_pwd = user_pwd;
 	}
-	public int getUsr_access() {
-		return usr_access;
+	public int getUser_access() {
+		return user_access;
 	}
-	public void setUsr_access(int usr_access) {
-		this.usr_access = usr_access;
+	public void setUser_access(int user_access) {
+		this.user_access = user_access;
 	}
-
+	
 	
 }

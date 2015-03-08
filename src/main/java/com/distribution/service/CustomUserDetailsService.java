@@ -36,15 +36,18 @@ public class CustomUserDetailsService implements UserDetailsService {
 			// 搜索数据库以匹配用户登录名.
 			// 我们可以通过dao使用JDBC来访问数据库
 			UserEntity userEntity = userMapper.getUserLevel(username);
-
+			
+			logger.info("username:" + userEntity.getUser_nm());
+			logger.info("pwd:" + userEntity.getUser_pwd());
+			logger.info("access:" + userEntity.getUser_access());
 			// Populate the Spring User object with details from the dbUser
 			// Here we just pass the username, password, and access level
 			// getAuthorities() will translate the access level to the correct
 			// role type
 
-			user = new User(userEntity.getUsr_nm(), userEntity.getUsr_pwd()
+			user = new User(userEntity.getUser_nm(), userEntity.getUser_pwd()
 					.toLowerCase(), true, true, true, true,
-					getAuthorities(userEntity.getUsr_access()));
+					getAuthorities(userEntity.getUser_access()));
 
 		} catch (Exception e) {
 			logger.error("Error in retrieving user");
@@ -65,9 +68,9 @@ public class CustomUserDetailsService implements UserDetailsService {
 		List<GrantedAuthority> authList = new ArrayList<GrantedAuthority>(2);
 
 		// 所有的用户默认拥有ROLE_USER权限
-		if(access.compareTo(0) == 0){
+//		if(access.compareTo(0) == 0){
 			authList.add(new GrantedAuthorityImpl("ROLE_USER"));
-		}
+//		}
 		// 如果参数access为-1.则拥有ROLE_BOSS权限
 		if (access.compareTo(-1) == 0) {
 			authList.add(new GrantedAuthorityImpl("ROLE_BOSS"));
