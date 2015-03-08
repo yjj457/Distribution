@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Complex Layout - jQuery EasyUI Demo</title>
+    <title>分销系统</title>
     <link rel="stylesheet" type="text/css" href="../resource/css/easyui.css">
     <link rel="stylesheet" type="text/css" href="../resource/css/icon.css">
     <link rel="stylesheet" type="text/css" href="../resource/css/demo.css">
@@ -12,45 +12,36 @@
     <script type="text/javascript" src="../resource/js/jquery.easyui.min.js"></script>
 </head>
 <body>
-    <h2>Complex Layout</h2>
-    <p>This sample shows how to create a complex layout.</p>
-    <div style="margin:20px 0;"></div>
-    <div class="easyui-layout" style="width:700px;height:350px;">
-        <div data-options="region:'north'" style="height:50px"></div>
-        <div data-options="region:'south',split:true" style="height:50px;"></div>
-        <div data-options="region:'east',split:true" title="East" style="width:180px;">
-            <ul class="easyui-tree" data-options="url:'tree_data1.json',method:'get',animate:true,dnd:true"></ul>
+    <div class="easyui-layout" style="width:1024px;height:600px;">
+        <div data-options="region:'north'" style="height:50px">
+        	<h1>分销系统</h1>
         </div>
-        <div data-options="region:'west',split:true" title="West" style="width:100px;">
-            <div class="easyui-accordion" data-options="fit:true,border:false">
-                <div title="Title1" style="padding:10px;">
-                    content1
+        <div data-options="region:'south',split:true" style="height:50px;"></div>
+        
+        <div data-options="region:'west',split:true" title="West" style="width:150px;">
+            <div class="easyui-accordion" style="width:150px;height:450px;">
+                <div title="用户管理" data-options="iconCls:'icon-add'" style="overflow:auto;padding:10px;">
+
+                    
+                    <div style="padding:5px 0;">
+       					<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-large-shopowner',size:'large',iconAlign:'top'" onclick="addTab('店长','./userInfo')">&nbsp;&nbsp;店长&nbsp;&nbsp;</a>
+        				<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-large-notshopowner',size:'large',iconAlign:'top'" onclick="addTab('非店长','./notShopInfo')">&nbsp;非店长&nbsp;</a>
+    				</div>
+
+                  
                 </div>
-                <div title="Title2" data-options="selected:true" style="padding:10px;">
-                    content2
+                <div title="用户组管理" data-options="iconCls:'icon-add'" style="padding:10px;">
+               
                 </div>
-                <div title="Title3" style="padding:10px">
-                    content3
+                <div title="统计报表" data-options="iconCls:'icon-add'" style="padding:10px;">
+                    
                 </div>
             </div>
         </div>
         <div data-options="region:'center',title:'Main Title',iconCls:'icon-ok'">
             <div class="easyui-tabs" data-options="fit:true,border:false,plain:true">
-                <div title="About" data-options="href:'_content.html'" style="padding:10px"></div>
                 <div title="DataGrid" style="padding:5px">
-                    <table class="easyui-datagrid"
-                            data-options="url:'datagrid_data1.json',method:'get',singleSelect:true,fit:true,fitColumns:true">
-                        <thead>
-                            <tr>
-                                <th data-options="field:'itemid'" width="80">Item ID</th>
-                                <th data-options="field:'productid'" width="100">Product ID</th>
-                                <th data-options="field:'listprice',align:'right'" width="80">List Price</th>
-                                <th data-options="field:'unitcost',align:'right'" width="80">Unit Cost</th>
-                                <th data-options="field:'attr1'" width="150">Attribute</th>
-                                <th data-options="field:'status',align:'center'" width="50">Status</th>
-                            </tr>
-                        </thead>
-                    </table>
+                    
                 </div>
             </div>
         </div>
