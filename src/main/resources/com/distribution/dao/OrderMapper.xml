@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.distribution.dao.OrderMapper">
+
+	<!-- 获取订单末四位数字 -->
+	<select id="getOrder" parameterType="String" resultType="String">
+		select case when max(substr(t.ord_id,-4)) is not null then lpad(to_char(to_number(substr(max(t.ord_id),-4))+1),4,'0') else '0001' end order_num
+		from order_info t
+		where t.org_id=#{org_id}
+      		  and t.pdate=to_char(sysdate,'yyyymmdd')
+	</select>
+	
+	<!-- 插入下单或退单数据 -->
+	<insert id="saleProduct" parameterType="java.util.List">
+		insert into order_info(pro_id,pro_nm,org_id,cate_id,pdate,sal_qty,sal_amt,ord_id) 
+		<foreach collection="list" item="item" index="index" open="(" close=")" separator="union">
+			select #{item.pro_id},
+				   (select t.pro_nm from pro_info t where t.pro_id=#{item.pro_id}),
+				   #{item.org_id},
+				   (select t.cate_id from pro_info t where t.pro_id=#{item.pro_id}),
+				   to_char(sysdate,'yyyymmdd'),
+				   #{item.sal_qty},
+				   #{item.sal_amt},
+				   #{item.ord_id}
+			from dual
+     	</foreach>
+		
+	</insert>
+</mapper>
