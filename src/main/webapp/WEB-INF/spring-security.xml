@@ -16,7 +16,7 @@
 	<security:http auto-config="true" use-expressions="true" access-denied-page="/auth/denied" >
 		
 		<security:intercept-url pattern="/auth/login" access="permitAll"/>
-		<security:intercept-url pattern="/main/common" access="hasRole('ROLE_USER') or hasRole('ROLE_BOSS')"/>
+		<security:intercept-url pattern="/main/common" access="hasRole('ROLE_USER')"/>
 		<security:intercept-url pattern="/*" access="permitAll"/>
 		
 		<security:remember-me />

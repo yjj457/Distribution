@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.security.core.GrantedAuthority;
@@ -21,8 +22,8 @@ import com.distribution.entity.UserEntity;
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
-	protected static Logger logger = Logger.getLogger("service");
-
+	private static final Logger logger = LoggerFactory.getLogger(CustomUserDetailsService.class);
+	
 	@Autowired
 	private UserMapper userMapper;
 
