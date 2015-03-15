@@ -27,7 +27,7 @@
 	}
 	
 	function sale(){
-		alert($("form").serialize());
+	//	alert($("form").serialize());
 		$.ajax({
             type: "POST",
             url: "./../shopOwner/saleProduct",

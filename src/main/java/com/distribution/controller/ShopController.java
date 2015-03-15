@@ -74,7 +74,7 @@ public class ShopController extends DistributionBaseController{
 	private String doProduct(String status,HttpServletRequest request, HttpServletResponse response){
 		//获取订(退)单号
 		String ord_id = request.getParameter("org_id") + new Date().getDateyyyyMMdd() + shopService.getOrder(request.getParameter("org_id"));
-		
+		logger.info("销售！:{}",ord_id);
 		ArrayList<HashMap<String, Object>> proInfos = new ArrayList<HashMap<String, Object>>();
 		for(int i=1;;i++){
 			HashMap<String, Object> proInfo = new HashMap<String,Object>();
@@ -88,6 +88,7 @@ public class ShopController extends DistributionBaseController{
 			logger.info("{}:{},{},{},{}",request.getParameter("org_id"),request.getParameter("pro_id" + i),request.getParameter("pro_nm" + i),request.getParameter("sal_qty" + i),request.getParameter("sal_amt" + i));
 			if(request.getParameter("pro_id" + (i+1)) == null){break;}
 		}
+		logger.info("service:saleProduct之前");
 		shopService.saleProduct(proInfos);
 		
 		return ord_id;

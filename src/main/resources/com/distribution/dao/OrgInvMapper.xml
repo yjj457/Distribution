@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.distribution.dao.OrgInvMapper">
-	<update id="updateOrg">
-		
+	<update id="updateOrgSal" parameterType="java.util.Map">
+		update org_inv_info t set t.inv_qty=t.inv_qty-#{sal_qty}  where t.org_id=#{org_id} and t.pro_id=#{pro_id} and t.pro_attr='0'
 	</update>
 </mapper>

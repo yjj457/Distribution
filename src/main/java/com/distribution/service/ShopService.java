@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.distribution.dao.OrderMapper;
+import com.distribution.dao.OrgInvMapper;
 
 @Service
 public class ShopService {
@@ -19,18 +20,24 @@ public class ShopService {
 	@Autowired
 	private OrderMapper orderMapper;
 	
+	@Autowired
+	private OrgInvMapper orgInvMapper;
+	
 	@Transactional
 	public String saleProduct(ArrayList<HashMap<String, Object>> proInfos){
-		
+		logger.info("service:saleProduct");
 		Iterator<HashMap<String, Object>> it = proInfos.iterator();
 		while(it.hasNext()){
 			HashMap<String, Object> proInfo = (HashMap<String, Object>) it.next();
+			
+			
 			logger.info("service:{}",proInfo.get("org_id"));
 			logger.info("service:{}",proInfo.get("pro_id"));
 			logger.info("service:{}",proInfo.get("pro_nm"));
 			logger.info("service:{}",proInfo.get("sal_qty"));
 			logger.info("service:{}",proInfo.get("sal_amt"));
 			logger.info("service:{}",proInfo.get("ord_id"));
+			orgInvMapper.updateOrgSal(proInfo);
 		}
 		
 		//插入订单表 order_info
