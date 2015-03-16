@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,11 +15,19 @@
 	var global = 0;
 	
 	$(function(){
-		global = 0;
-		var targetObj = $("form").append('店铺代号:<input id="shopid" class="easyui-textbox" type="text" name="org_id" />');
-		$.parser.parse(targetObj);
-		addGoods();
+		init();
 	});
+	
+	
+	//初始化页面
+	function init(){
+		var value = '<c:forEach items="${org_id}" var="node"><c:out value="${node}"></c:out></c:forEach>';
+		$("form").html("");
+    	global = 0;
+    	var targetObj = $("form").append('店铺代号:<input id="shopid" type="text" name="org_id" value="' + value + '" readonly />');
+		$.parser.parse(targetObj);
+    	addGoods();
+	}
 	
 	function addGoods(){
 		global++;
@@ -38,11 +47,7 @@
 				alert("下单成功,单号为:" + data);
             	
             	//初始化页面
-            	$("form").html("");
-            	global = 0;
-            	var targetObj = $("form").append('店铺代号:<input id="shopid" type="text" name="org_id" />');
-        		$.parser.parse(targetObj);
-            	addGoods();
+				init();
             }
         });
 	}

@@ -49,7 +49,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 			user = new User(userEntity.getUser_nm(), userEntity.getUser_pwd()
 					.toLowerCase(), true, true, true, true,
 					getAuthorities(userEntity.getUser_access()));
-
+			
 		} catch (Exception e) {
 			logger.error("Error in retrieving user");
 			throw new UsernameNotFoundException("Error in retrieving user");

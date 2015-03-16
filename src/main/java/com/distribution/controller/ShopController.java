@@ -2,6 +2,7 @@ package com.distribution.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,12 +10,19 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
-import com.common.util.Date;
+import yjj.common.util.Date;
+import yjj.springSecurity.util.Session;
+
 import com.distribution.service.ShopService;
+import com.distribution.service.UserService;
 
 
 @Controller
@@ -25,16 +33,25 @@ public class ShopController extends DistributionBaseController{
 	@Autowired
 	private ShopService shopService;
 	
+	@Autowired
+	private UserService userService;
+	
 	@RequestMapping(value="showSale")
-	public String showSale(){
+	public ModelAndView showSale(){
 		logger.info("打开销售页面");
-		return folder() + "shopOwnerShowSale";
+		logger.info("org_id:{}" ,getOrgIdByUserNm());
+		Map<String,String> model = new HashMap<String,String>();
+		model.put("org_id", getOrgIdByUserNm());
+		return new ModelAndView(folder() + "shopOwnerShowSale",model);
 	}
 	
 	@RequestMapping(value="showReturn")
-	public String showReturn(){
+	public ModelAndView showReturn(){
 		logger.info("打开退货页面");
-		return folder() + "shopOwnerShowReturn";
+		logger.info("org_id:{}" ,getOrgIdByUserNm());
+		Map<String,String> model = new HashMap<String,String>();
+		model.put("org_id", getOrgIdByUserNm());
+		return new ModelAndView(folder() + "shopOwnerShowReturn",model);
 	}
 	
 	
@@ -82,7 +99,10 @@ public class ShopController extends DistributionBaseController{
 			proInfo.put("ord_id", ord_id);
 			proInfo.put("pro_id", request.getParameter("pro_id" + i) + "");
 		//	proInfo.put("pro_nm", request.getParameter("pro_nm" + i) + "");
-			proInfo.put("sal_qty", Integer.parseInt(status + request.getParameter("sal_qty" + i) + ""));
+			if(status.equals("-"))
+				proInfo.put("sal_qty", Integer.parseInt(request.getParameter("sal_qty" + i) + ""));
+			else
+				proInfo.put("sal_qty", (0 - Integer.parseInt(request.getParameter("sal_qty" + i)) + ""));
 			proInfo.put("sal_amt", Integer.parseInt(request.getParameter("sal_amt" + i) + ""));
 			proInfos.add(proInfo);
 			logger.info("{}:{},{},{},{}",request.getParameter("org_id"),request.getParameter("pro_id" + i),request.getParameter("pro_nm" + i),request.getParameter("sal_qty" + i),request.getParameter("sal_amt" + i));
@@ -93,5 +113,7 @@ public class ShopController extends DistributionBaseController{
 		
 		return ord_id;
 	}
+	
+	
 	
 }

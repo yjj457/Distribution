@@ -10,4 +10,15 @@
 	where user_nm=#{username}
   </select>
   <!-- 参数还没写 -->
+  
+  
+  <!-- 通过用户名获取店仓ID -->
+  <select id="getOrgIdByUserNm" parameterType="String" resultType="String">
+  	select t.org_id
+  	from user_info t
+  	where t.user_nm=#{user_nm}
+  </select>
+  
+  
+  
 </mapper>

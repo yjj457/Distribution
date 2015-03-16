@@ -28,7 +28,7 @@
     <div data-options="region:'north',split:true" style="height:60px;"><h2>分销系统</h2></div>
     
     <div data-options="region:'west',split:true" style="width:200px;">
-           <div class="easyui-accordion" style="width:193px;height:630px;">
+           <div class="easyui-accordion" style="width:193px;height:530px;">
                <div title="店长操作" data-options="iconCls:'icon-add'" style="overflow:auto;padding:10px;">
 
                    
@@ -56,7 +56,7 @@
        </div>
     <div data-options="region:'center'," style="padding:5px;background:#eee;">
            
-           <div id="tt" class="easyui-tabs" style="width:1000px;height:600px;">
+           <div id="tt" class="easyui-tabs" style="width:1000px;height:500px;">
                <div title="首页">
 
                   </div>

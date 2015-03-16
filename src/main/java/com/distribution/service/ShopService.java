@@ -37,7 +37,10 @@ public class ShopService {
 			logger.info("service:{}",proInfo.get("sal_qty"));
 			logger.info("service:{}",proInfo.get("sal_amt"));
 			logger.info("service:{}",proInfo.get("ord_id"));
-			orgInvMapper.updateOrgSal(proInfo);
+			
+			//销售才改变库存 退货不改变库存
+			if(Integer.parseInt((String) proInfo.get("sal_qty")) > 0) 
+				orgInvMapper.updateOrgSal(proInfo);
 		}
 		
 		//插入订单表 order_info
