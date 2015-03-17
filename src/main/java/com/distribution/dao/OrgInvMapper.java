@@ -22,14 +22,13 @@ public interface OrgInvMapper {
 	 */
 	public List<InvSearchEntity> selectOrgIn2Inv(String org_id);
 	public String selectOrgIn2InvNum(String org_id);
-	public void in2StoreDoAdd0(String org_id);
-	public void in2StoreDoSub1(String org_id);
+	public void in2StoreDo(Map<String, String> good);
 	/**
 	 * 仓库管理人员确认出仓
 	 */
 	public List<InvSearchEntity> selectOrgOut4Inv(String org_id);
 	public String selectOrgOut4InvNum(String org_id);
-	public void out4StoreDoSub2(String org_id);
+	public void out4StoreDo(Map<String,String> goods);
 	/**
 	 * 仓库管理人员查询仓库现状
 	 */

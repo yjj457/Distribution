@@ -24,7 +24,7 @@ function getChecked(){
 	$.ajax({
         type: "POST",
         url: "./../storeHouse/in2StoreDo",
-        data: {orgIds : names.join(",")},
+        data: {pro_ids : names.join(",")},
      // dataType: "json",
         success: function(data){
 			alert("进仓成功!");
@@ -41,7 +41,7 @@ function getChecked(){
 </head>
 <body>
 
-	<table id="dg" class="easyui-datagrid" title="进仓确认" style="width:700px;height:440px"
+	<table id="dg" class="easyui-datagrid" title="进仓确认" style="width:700px;height:420px"
             data-options="rownumbers:true,singleSelect:true,url:'./../storeHouse/in2Store',method:'get'">
         <thead>
             <tr>

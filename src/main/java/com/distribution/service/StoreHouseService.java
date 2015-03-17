@@ -2,11 +2,13 @@ package com.distribution.service;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.distribution.dao.OrgInvMapper;
 import com.distribution.entity.InvSearchEntity;
@@ -17,7 +19,6 @@ public class StoreHouseService {
 	
 	@Autowired
 	private OrgInvMapper orgInvMapper;
-	
 	
 	
 	public String selectInvNum(String org_id){
@@ -53,11 +54,20 @@ public class StoreHouseService {
 		logger.info(orgInvMapper.selectOrgOut4Inv(org_id).toString());
 		return orgInvMapper.selectOrgOut4Inv(org_id);
 	}
-	
-	public void in2StoreDo(List<String> list){
-		Iterator it = list.iterator();
+	@Transactional
+	public void in2StoreDo(List<Map<String, String>> goods){
+		Iterator<Map<String, String>> it = goods.iterator();
 		while(it.hasNext()){
-			it.next();
+			Map<String, String> good = (Map<String, String>) it.next();
+			logger.info("进仓:{}",good.toString());
+			orgInvMapper.in2StoreDo(good);
+		}
+	}
+	@Transactional
+	public void out4StoreDo(List<Map<String, String>> goods){
+		Iterator<Map<String, String>> it = goods.iterator();
+		while(it.hasNext()){
+			orgInvMapper.out4StoreDo(it.next());
 		}
 	}
 }

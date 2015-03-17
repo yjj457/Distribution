@@ -17,6 +17,9 @@
 		
 		<security:intercept-url pattern="/auth/login" access="permitAll"/>
 		<security:intercept-url pattern="/main/common" access="hasRole('ROLE_USER')"/>
+		<security:intercept-url pattern="/shopOwner/*" access="hasRole('ROLE_SHOP')"/>
+		<security:intercept-url pattern="/storeHouse/*" access="hasRole('ROLE_INV')"/>
+		<security:intercept-url pattern="/goodsManager/*" access="hasRole('ROLE_PRO')"/>
 		<security:intercept-url pattern="/*" access="permitAll"/>
 		
 		<security:remember-me />

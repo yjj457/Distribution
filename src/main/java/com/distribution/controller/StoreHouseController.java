@@ -87,16 +87,22 @@ public class StoreHouseController extends DistributionBaseController{
 		return map;
 	}
 	
+	
+	
 	@RequestMapping(value="in2StoreDo")
 	@ResponseBody
 	public void in2StoreDo(HttpServletRequest request, HttpServletResponse response){
 		logger.info("进仓");
-		List<String> list = new ArrayList<String>();
-		String[] orgIds = request.getParameter("orgIds").split(",");
-		for(String n : orgIds){
-			list.add(n);
+		List<Map<String,String>> goods = new ArrayList<Map<String,String>>();
+		Map<String,String> good = null;
+		String[] pro_ids = request.getParameter("pro_ids").split(",");
+		for(String n : pro_ids){
+			good = new HashMap<String,String>();
+			good.put("org_id", getOrgIdByUserNm());
+			good.put("pro_id", n);
+			goods.add(good);
 		}
-		
+		storeHouseService.in2StoreDo(goods);
 	}
 	
 	@RequestMapping(value="out4Store")
@@ -115,5 +121,21 @@ public class StoreHouseController extends DistributionBaseController{
 		map.put("rows", list);
 		//TODO 获取仓库数据的json:{"total":"10","rows":[{"id":"185303","firstname":"fanrio","lastname":"last","phone":"0","email":"x@x.com"},{"id":"185305","firstname":"yutryrt","lastname":"fghgfhgfh","phone":"345345345","email":""},{"id":"185306","firstname":"sssssssss","lastname":"hhhhhhhhhhh","phone":"4444444444","email":""},{"id":"185307","firstname":"hfghfgfhgfh","lastname":"565ghfhghgfh","phone":"4444444444444","email":""},{"id":"185308","firstname":"ghjghjghjghj","lastname":"ghjghjghj","phone":"45645645645","email":""},{"id":"185309","firstname":"ee","lastname":"e","phone":"e","email":"e@c.pcd"},{"id":"185310","firstname":"erert","lastname":"erterter","phone":"erte","email":"rtert@sdghfs.ksdh"},{"id":"185311","firstname":"kj","lastname":"lk","phone":"","email":""},{"id":"185312","firstname":"kj","lastname":"lk","phone":"","email":""},{"id":"185313","firstname":"def","lastname":"test","phone":"12365478","email":"def@def.com"}]}
 		return map;
+	}
+	
+	@RequestMapping(value="out4StoreDo")
+	@ResponseBody
+	public void out4StoreDo(HttpServletRequest request, HttpServletResponse response){
+		logger.info("出仓");
+		List<Map<String,String>> goods = new ArrayList<Map<String,String>>();
+		Map<String,String> good = null;
+		String[] pro_ids = request.getParameter("pro_ids").split(",");
+		for(String n : pro_ids){
+			good = new HashMap<String,String>();
+			good.put("org_id", getOrgIdByUserNm());
+			good.put("pro_id", n);
+			goods.add(good);
+		}
+		storeHouseService.out4StoreDo(goods);
 	}
 }

@@ -31,7 +31,7 @@
 	
 	function addGoods(){
 		global++;
-		var targetObj = $("form").append('<div class="sale"><div style="margin-bottom:10px"><div>货号:</div><input class="easyui-textbox" name="pro_id' + global + '" style="width:100%;height:20px"></div><div style="margin-bottom:10px"><div>货名:</div><input class="easyui-textbox" name="pro_nm' + global + '" style="width:100%;height:20px"></div><div style="margin-bottom:10px"><div>数量:</div><input class="easyui-textbox" name="sal_qty' + global + '" style="width:100%;height:20px"></div><div style="margin-bottom:10px"><div>单价:</div><input class="easyui-textbox" name="sal_amt' + global + '" style="width:100%;height:20px"></div></div><hr />');
+		var targetObj = $("form").append('<div class="sale"><div style="margin-bottom:10px"><div>仓库ID:</div><input class="easyui-textbox" name="inv_id' + global + '" style="width:100%;height:20px"></div><div style="margin-bottom:10px"><div>货号:</div><input class="easyui-textbox" name="pro_id' + global + '" style="width:100%;height:20px"></div><div style="margin-bottom:10px"><div>数量:</div><input class="easyui-textbox" name="sal_qty' + global + '" style="width:100%;height:20px"></div><div style="margin-bottom:10px"></div><hr />');
 		$.parser.parse(targetObj);
 	}
 	
@@ -44,7 +44,7 @@
          // dataType: "json",
             success: function(data){
             	//data中返回订单号
-				alert("退单成功,单号为:" + data);
+				alert("进货成功");
             	
             	//初始化页面
 				init();
@@ -59,7 +59,7 @@
 <div class="easyui-panel" style="width:400px;padding:30px 60px"><form></form></div>
 <div>
 	<!-- <a href="#" class="easyui-linkbutton" iconCls="icon-add" onclick="addGoods();">添加商品</a> -->
-	<a href="#" class="easyui-linkbutton" iconCls="icon-remove" onclick="sale();">退单</a>
+	<a href="#" class="easyui-linkbutton" iconCls="icon-add" onclick="sale();">进货</a>
 </div>
     
 </body>

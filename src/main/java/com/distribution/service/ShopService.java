@@ -3,6 +3,7 @@ package com.distribution.service;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,5 +62,9 @@ public class ShopService {
 		return orderMapper.getOrder(org_id);
 	}
 
+	public void shopAdd(Map<String,String> goods){
+		orgInvMapper.shopAdd(goods);
+	}
+	
 
 }

@@ -9,6 +9,9 @@
     <link rel="stylesheet" type="text/css" href="../resource/plugins/jquery-easyui-1.4.1/themes/icon.css">
     <script type="text/javascript" src="../resource/js/jquery.min.js"></script>
     <script type="text/javascript" src="../resource/plugins/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
+    <style>
+    	.logout{float:right;}
+    </style>
     <script type="text/javascript">
             function addTab(title, url){
                 if ($('#tt').tabs('exists', title)){
@@ -25,17 +28,20 @@
         </script>
 </head>
 <body class="easyui-layout">
-    <div data-options="region:'north',split:true" style="height:60px;"><h2>分销系统</h2></div>
+    <div data-options="region:'north',split:true" style="height:80px;"><h2>分销系统</h2>
+    
+    	<a href="/Distribution/auth/logout" class="logout">退出登录</a>
+    </div>
     
     <div data-options="region:'west',split:true" style="width:200px;">
-           <div class="easyui-accordion" style="width:193px;height:530px;">
+           <div class="easyui-accordion" style="width:193px;height:515px;">
                <div title="店长操作" data-options="iconCls:'icon-add'" style="overflow:auto;padding:10px;">
 
                    
                    <div style="padding:5px 0;">
       					<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-edit',size:'large',iconAlign:'top'" onclick="addTab('&nbsp;&nbsp;&nbsp;&nbsp;销售&nbsp;&nbsp;&nbsp;&nbsp;','./../shopOwner/showSale')">&nbsp;&nbsp;&nbsp;&nbsp;销售&nbsp;&nbsp;&nbsp;&nbsp;</a><br /><br />
-       					<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel',size:'large',iconAlign:'top'" onclick="addTab('&nbsp;&nbsp;&nbsp;&nbsp;退货&nbsp;&nbsp;&nbsp;&nbsp;','./../shopOwner/showReturn')">&nbsp;&nbsp;&nbsp;&nbsp;退货&nbsp;&nbsp;&nbsp;&nbsp;</a>
-       					<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel',size:'large',iconAlign:'top'" onclick="addTab('&nbsp;&nbsp;&nbsp;&nbsp;退货&nbsp;&nbsp;&nbsp;&nbsp;','./../shopOwner/showIn')">&nbsp;&nbsp;&nbsp;&nbsp;进货&nbsp;&nbsp;&nbsp;&nbsp;</a>
+       					<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel',size:'large',iconAlign:'top'" onclick="addTab('&nbsp;&nbsp;&nbsp;&nbsp;退货&nbsp;&nbsp;&nbsp;&nbsp;','./../shopOwner/showReturn')">&nbsp;&nbsp;&nbsp;&nbsp;退货&nbsp;&nbsp;&nbsp;&nbsp;</a><br /><br />
+       					<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add',size:'large',iconAlign:'top'" onclick="addTab('&nbsp;&nbsp;&nbsp;&nbsp;进货&nbsp;&nbsp;&nbsp;&nbsp;','./../shopOwner/showIn')">&nbsp;&nbsp;&nbsp;&nbsp;进货&nbsp;&nbsp;&nbsp;&nbsp;</a>
    				   </div>
 
                  

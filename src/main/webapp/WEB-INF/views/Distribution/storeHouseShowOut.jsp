@@ -16,10 +16,31 @@ $(function(){
 	$('#dg').datagrid({selectOnCheck:$(this).is(':checked')});
 	$('#dg').datagrid({checkOnSelect:$(this).is(':checked')});
 });
+function getChecked(){
+	var checkedItems = $('#dg').datagrid('getChecked');
+ 	var names = [];
+	$.each(checkedItems, function(index, item){
+		names.push(item.pro_id);
+	});           
+//	alert(names.join(","));
+	$.ajax({
+        type: "POST",
+        url: "./../storeHouse/out4StoreDo",
+        data: {pro_ids : names.join(",")},
+     // dataType: "json",
+        success: function(data){
+			alert("出仓成功!");
+        	
+        	//初始化表格数据
+			$('#dg').datagrid("reload"); 
+        }
+    });
+	//console.log(names.join(","));
+}
 </script>
 </head>
 <body>
-	<table id="dg" class="easyui-datagrid" title="出仓确认" style="width:700px;height:440px"
+	<table id="dg" class="easyui-datagrid" title="出仓确认" style="width:700px;height:420px"
             data-options="rownumbers:true,singleSelect:true,url:'./../storeHouse/out4Store',method:'get'">
         <thead>
             <tr>
@@ -30,5 +51,6 @@ $(function(){
             </tr>
         </thead>
     </table>
+    <input type="button" value="出仓" onclick="getChecked()" />
 </body>
 </html>

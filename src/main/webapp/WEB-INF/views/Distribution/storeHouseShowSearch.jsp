@@ -11,7 +11,7 @@
 <script type="text/javascript" src="../resource/plugins/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
 </head>
 <body>
-	<table id="dg" title="<c:forEach items="${org_id}" var="node"><c:out value="${node}"></c:out></c:forEach>库存情况" class="easyui-datagrid" style="width:700px;height:250px"
+	<table id="dg" title="<c:forEach items="${org_id}" var="node"><c:out value="${node}"></c:out></c:forEach>库存情况" class="easyui-datagrid" style="width:700px;height:420px"
             url="./../storeHouse/searchStore"
             toolbar="#toolbar" pagination="true"
             rownumbers="true" fitColumns="true" singleSelect="true">
@@ -24,9 +24,8 @@
         </thead>
     </table>
     
-    <div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
+    <div id="dlg" class="easyui-dialog" style="width:280px;height:420px;padding:10px 20px"
             closed="true" buttons="#dlg-buttons">
-        <div class="ftitle">User Information</div>
         <form id="fm" method="post" novalidate>
             <div class="fitem">
                 <label>货品代号</label>

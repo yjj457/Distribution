@@ -93,9 +93,12 @@ public class ShopController extends DistributionBaseController{
 	@RequestMapping(value="inProduct")
 	@ResponseBody
 	public void inProduct(HttpServletRequest request, HttpServletResponse response){
-		Map<String,String> model = new HashMap<String,String>();
-		model.put("org_id0", getOrgIdByUserNm());
-		model.put("org_id1", request.getParameter("org_id"));
+		Map<String,String> goods = new HashMap<String,String>();
+		goods.put("org_id", getOrgIdByUserNm());
+		goods.put("inv_id", request.getParameter("inv_id1"));
+		goods.put("pro_id", request.getParameter("pro_id1"));
+		goods.put("inv_qty", request.getParameter("sal_qty1"));
+		shopService.shopAdd(goods);
 		
 	}
 	
