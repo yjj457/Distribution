@@ -9,7 +9,6 @@
 <link rel="stylesheet" type="text/css" href="../resource/plugins/jquery-easyui-1.4.1/themes/icon.css">
 <script type="text/javascript" src="../resource/js/jquery.min.js"></script>
 <script type="text/javascript" src="../resource/plugins/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
-<title>Insert title here</title>
 </head>
 <body>
 	<table id="dg" title="<c:forEach items="${org_id}" var="node"><c:out value="${node}"></c:out></c:forEach>库存情况" class="easyui-datagrid" style="width:700px;height:250px"

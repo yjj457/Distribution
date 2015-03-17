@@ -53,7 +53,14 @@ public class ShopController extends DistributionBaseController{
 		model.put("org_id", getOrgIdByUserNm());
 		return new ModelAndView(folder() + "shopOwnerShowReturn",model);
 	}
-	
+	@RequestMapping(value="showIn")
+	public ModelAndView showIn(){
+		logger.info("打开进货页面");
+		logger.info("org_id:{}" ,getOrgIdByUserNm());
+		Map<String,String> model = new HashMap<String,String>();
+		model.put("org_id", getOrgIdByUserNm());
+		return new ModelAndView(folder() + "shopOwnerShowIn",model);
+	}
 	
 	/**
 	 * 下单
@@ -79,6 +86,18 @@ public class ShopController extends DistributionBaseController{
 		return doProduct("-",request,response);
 	}
 	
+	/**
+	 * 店长从仓库进货
+	 */
+	
+	@RequestMapping(value="inProduct")
+	@ResponseBody
+	public void inProduct(HttpServletRequest request, HttpServletResponse response){
+		Map<String,String> model = new HashMap<String,String>();
+		model.put("org_id0", getOrgIdByUserNm());
+		model.put("org_id1", request.getParameter("org_id"));
+		
+	}
 	
 	
 	/**

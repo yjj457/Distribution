@@ -2,7 +2,89 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.distribution.dao.OrgInvMapper">
+
+	<!-- 店长的销售操作 -->
 	<update id="updateOrgSal" parameterType="java.util.Map">
-		update org_inv_info t set t.inv_qty=t.inv_qty-#{sal_qty}  where t.org_id=#{org_id} and t.pro_id=#{pro_id} and t.pro_attr='0'
+		update org_inv_info t 
+		set t.inv_qty=t.inv_qty-#{sal_qty}  
+		where t.org_id=#{org_id} 
+			  and t.pro_id=#{pro_id} 
+			  and t.pro_attr='0'
+	</update>
+	
+	
+	<!-- 店长进货操作 -->
+	<resultMap id="nameMap" type =""></resultMap ><!-- 同一个文件中resultMap的id不可重复 -->
+  	<select id="shopAdd" parameterType="java.util.Map" statementType="CALLABLE">
+    	{call shopAdd(
+    	#{org_id},
+    	#{inv_id},
+    	#{inv_qty}
+  	</select>
+	
+	<!-- 仓库管理员操作 -->
+	<!-- 查询库存 -->
+	<select id="selectInv" parameterType="String" resultType="InvSearchEntity">
+		select t1.pro_id ,t2.pro_nm,t1.inv_qty
+		from org_inv_info t1,
+		     pro_info t2
+		where t2.pro_id=t1.pro_id
+		      and t1.org_id=#{org_id}
+		      and t1.org_attr=1
+		      and t1.pro_attr=0
+	</select>
+	<select id="selectInvNum" parameterType="String" resultType="String">
+		select count(*) total
+		from org_inv_info t1,
+		     pro_info t2
+		where t2.pro_id=t1.pro_id
+		      and t1.org_id=#{org_id}
+		      and t1.org_attr=1
+		      and t1.pro_attr=0
+	</select>
+	
+	<!-- 进仓确认 -->
+	<select id="selectOrgIn2Inv" parameterType="String" resultType="InvSearchEntity">
+		select t1.pro_id ,t2.pro_nm,t1.inv_qty
+		from org_inv_info t1,
+		     pro_info t2
+		where t2.pro_id=t1.pro_id
+		      and t1.org_id=#{org_id}
+		      and t1.org_attr=1
+		      and t1.pro_attr=1
+	</select>
+	
+	<select id="selectOrgIn2InvNum" parameterType="String" resultType="String">
+		select count(*)
+		from org_inv_info t1,
+		     pro_info t2
+		where t2.pro_id=t1.pro_id
+		      and t1.org_id=#{org_id}
+		      and t1.org_attr=1
+		      and t1.pro_attr=1
+	</select>
+	
+	<!-- 出仓确认 -->
+	<select id="selectOrgOut4Inv" parameterType="String" resultType="InvSearchEntity">
+		select t1.pro_id ,t2.pro_nm,t1.inv_qty
+		from org_inv_info t1,
+		     pro_info t2
+		where t2.pro_id=t1.pro_id
+		      and t1.org_id=#{org_id}
+		      and t1.org_attr=1
+		      and t1.pro_attr=2
+	</select>
+	
+	<select id="selectOrgOut4InvNum" parameterType="String" resultType="String">
+		select count(*)
+		from org_inv_info t1,
+		     pro_info t2
+		where t2.pro_id=t1.pro_id
+		      and t1.org_id=#{org_id}
+		      and t1.org_attr=1
+		      and t1.pro_attr=2
+	</select>
+	<update id="out4StoreDo" parameterType="String">
+		
 	</update>
 </mapper>
