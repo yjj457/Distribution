@@ -2,7 +2,6 @@ package yjj.springSecurity.util;
 
 import java.util.Collection;
 
-import org.junit.Test;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
