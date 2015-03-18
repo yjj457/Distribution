@@ -44,7 +44,7 @@
          // dataType: "json",
             success: function(data){
             	//data中返回订单号
-				alert("进货成功");
+				alert("提货成功");
             	
             	//初始化页面
 				init();
@@ -59,7 +59,7 @@
 <div class="easyui-panel" style="width:400px;padding:30px 60px"><form></form></div>
 <div>
 	<!-- <a href="#" class="easyui-linkbutton" iconCls="icon-add" onclick="addGoods();">添加商品</a> -->
-	<a href="#" class="easyui-linkbutton" iconCls="icon-add" onclick="sale();">进货</a>
+	<a href="#" class="easyui-linkbutton" iconCls="icon-add" onclick="sale();">提货</a>
 </div>
     
 </body>

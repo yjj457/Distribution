@@ -41,7 +41,7 @@
                    <div style="padding:5px 0;">
       					<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-edit',size:'large',iconAlign:'top'" onclick="addTab('&nbsp;&nbsp;&nbsp;&nbsp;销售&nbsp;&nbsp;&nbsp;&nbsp;','./../shopOwner/showSale')">&nbsp;&nbsp;&nbsp;&nbsp;销售&nbsp;&nbsp;&nbsp;&nbsp;</a><br /><br />
        					<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-cancel',size:'large',iconAlign:'top'" onclick="addTab('&nbsp;&nbsp;&nbsp;&nbsp;退货&nbsp;&nbsp;&nbsp;&nbsp;','./../shopOwner/showReturn')">&nbsp;&nbsp;&nbsp;&nbsp;退货&nbsp;&nbsp;&nbsp;&nbsp;</a><br /><br />
-       					<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add',size:'large',iconAlign:'top'" onclick="addTab('&nbsp;&nbsp;&nbsp;&nbsp;进货&nbsp;&nbsp;&nbsp;&nbsp;','./../shopOwner/showIn')">&nbsp;&nbsp;&nbsp;&nbsp;进货&nbsp;&nbsp;&nbsp;&nbsp;</a>
+       					<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add',size:'large',iconAlign:'top'" onclick="addTab('&nbsp;&nbsp;&nbsp;&nbsp;提货&nbsp;&nbsp;&nbsp;&nbsp;','./../shopOwner/showIn')">&nbsp;&nbsp;&nbsp;&nbsp;提货&nbsp;&nbsp;&nbsp;&nbsp;</a>
    				   </div>
 
                  

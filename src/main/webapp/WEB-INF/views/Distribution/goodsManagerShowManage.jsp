@@ -5,8 +5,26 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script>
+
+function excelUpload(){
+	$.ajaxFileUpload({
+         url:'doajaxfileupload.php', //你处理上传文件的服务端
+         secureuri:false,
+         fileElementId:'excel_upload',
+         dataType: 'json',
+         success: function (data){
+       	 	
+         }
+    });
+}
+</script>
 </head>
 <body>
-	goodsManagerShowManage
+<form id="file_upload_id" name="file_upload_name" action="" method="post" enctype="multipart/form-data">
+	<div>提交Excel(现在仅支持 Excel 2003 *.xls)</div>
+	<div><input type="file" name="excel_upload" id="excel_upload" /></div>
+	<div><input type="submit" value="上传"/></div>
+</form>
 </body>
 </html>

@@ -26,7 +26,7 @@ public class Session {
 		return this.userDetails.getPassword();
 	}
 	
-	public String getString(){
+	public String toString(){
 		return this.userDetails.toString();
 	}
 	
@@ -34,5 +34,5 @@ public class Session {
 		return this.userDetails.getAuthorities();
 	}
 	
-	
+
 }
