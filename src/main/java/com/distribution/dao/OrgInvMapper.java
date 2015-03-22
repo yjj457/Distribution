@@ -1,5 +1,7 @@
 package com.distribution.dao;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -48,4 +50,12 @@ public interface OrgInvMapper {
 	 * @param 仓id 货数量 update进1
 	 */
 	public void GoodsInInv1(Map<String, String> goods);
+	
+	
+	/**
+	 * 仓库中上传货品条目
+	 * @param goodsInfo
+	 */
+	public void uploadExcel(ArrayList<String> pro_ids);
+	
 }

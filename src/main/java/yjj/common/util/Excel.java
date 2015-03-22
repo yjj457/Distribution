@@ -13,7 +13,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.junit.Test;
 
 public class Excel {
-	private static ArrayList<ArrayList<String>> readFromXLS2003(String filePath){
+	public static ArrayList<ArrayList<String>> readFromXLS2003(String filePath){
 		File excelFile = null;// Excel文件对象  
         InputStream is = null;// 输入流对象  
         String cellStr = null;// 单元格，最终按字符串处理

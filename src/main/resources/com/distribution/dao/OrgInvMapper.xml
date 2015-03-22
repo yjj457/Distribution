@@ -100,5 +100,12 @@
 			  and t.pro_attr=2
 	</update>
 	
+	<insert id="uploadExcel" parameterType="java.util.List">
+		insert into org_inv_info(org_id,org_nm,org_attr,pro_id,inv_qty,pro_attr)
+		<foreach collection="list" item="item" index="index" open="(" close=")" separator="union">
+			select distinct t.org_id,t.org_nm,t.org_attr,#{item.pro_id} pro_id,0 inv_qty,t.pro_attr
+			from org_inv_info t
+		</foreach>
+	</insert>
 	
 </mapper>

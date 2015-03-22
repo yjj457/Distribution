@@ -21,10 +21,14 @@ function excelUpload(){
 </script>
 </head>
 <body>
-<form id="file_upload_id" name="file_upload_name" action="" method="post" enctype="multipart/form-data">
-	<div>提交Excel(现在仅支持 Excel 2003 *.xls)</div>
-	<div><input type="file" name="excel_upload" id="excel_upload" /></div>
-	<div><input type="submit" value="上传"/></div>
-</form>
+
+<h5>提交Excel(现在仅支持 Excel 2003 *.xls)</h5><hr/>  
+    <form id="file_upload_id" name="file_upload_name" action="./../goodsManager/upExcel" method="post" enctype="multipart/form-data">  
+        <input type="hidden" name="functionId" value="${functionId}"/>  
+        <input type="hidden" name="fileType" value="${fileType}"/>  
+        <input type="hidden" name="maxSize" value="${maxSize}"/>  
+        <div><input type="file" name="excel_uploads"/></div>  
+        <div><input type="submit" value="上传"/></div>  
+    </form>
 </body>
 </html>

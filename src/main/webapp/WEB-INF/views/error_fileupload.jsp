@@ -7,14 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<table border="1px">
-<foreach >
-<tr>
-	<td>NK0001</td>
-	<td>耐克0001</td>
-	<td><input type="text" name="" /></td>
-</tr>
-</foreach>
-</table>
+	文件提交失败!!!
 </body>
 </html>
