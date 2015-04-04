@@ -58,4 +58,10 @@ public interface OrgInvMapper {
 	 */
 	public void uploadExcel(ArrayList<String> pro_ids);
 	
+	/**
+	 * 货品购买
+	 * update 店仓表 org_attr为0 pro_attr为1的字段
+	 * @param buy
+	 */
+	public void buy(Map<String,String> buy);
 }

@@ -103,9 +103,17 @@
 	<insert id="uploadExcel" parameterType="java.util.List">
 		insert into org_inv_info(org_id,org_nm,org_attr,pro_id,inv_qty,pro_attr)
 		<foreach collection="list" item="item" index="index" open="(" close=")" separator="union">
-			select distinct t.org_id,t.org_nm,t.org_attr,#{item.pro_id} pro_id,0 inv_qty,t.pro_attr
+			select distinct t.org_id,t.org_nm,t.org_attr,#{item} pro_id,0 inv_qty,t.pro_attr
 			from org_inv_info t
 		</foreach>
 	</insert>
+	
+	<update id="buy" parameterType="java.util.Map">
+		update org_inv_info 
+		set inv_qty = inv_qty + #{inv_qty} 
+		where org_id=#{org_id} 
+			  and pro_attr=1 
+			  and pro_id=#{pro_id}
+	</update>
 	
 </mapper>

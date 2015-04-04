@@ -1,20 +1,52 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../resource/plugins/jquery-easyui-1.4.1/themes/bootstrap/easyui.css">
+<link rel="stylesheet" type="text/css" href="../resource/plugins/jquery-easyui-1.4.1/themes/icon.css">
+<script type="text/javascript" src="../resource/js/jquery.min.js"></script>
+<script type="text/javascript" src="../resource/plugins/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
+
+<script type="text/javascript">
+	$(function(){
+		$.ajax({
+            type: "POST",
+            url: "./../goodsManager/getPro",
+            data: {},
+            success: function(data){
+            	var i = 0;
+            	for(var o in data){ 
+            		i++;
+            		$("table").append('<tr><td><input type="hidden" name="pro_id' + i + '" value="' +data[o].pro_id + '" />' + data[o].pro_nm + '</td><td><input type="text" class="easyui-numberbox" name="inv_qty' + i + '" /></td></tr>');
+            	}
+            }
+        });
+	});
+	
+	function buy(){
+		$.ajax({
+            type: "POST",
+            url: "./../goodsManager/buy",
+            data: $("form").serialize(),
+            dataType : "html",
+            success: function(data){
+
+            }
+        });
+	}
+	
+</script>
 </head>
 <body>
+<form>
 <table border="1px">
-<foreach >
-<tr>
-	<td>NK0001</td>
-	<td>耐克0001</td>
-	<td><input type="text" name="" /></td>
-</tr>
-</foreach>
+	<label>收货仓库:</label><input type="text" name="inv_id" value="" />
 </table>
+</form>
+<a href="javascript:buy()" class="easyui-linkbutton" data-options="iconCls:'icon-add'" style="width:80px">进货</a>
+
 </body>
 </html>

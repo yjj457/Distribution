@@ -5,22 +5,30 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.distribution.entity.OrgInvEntity;
+import com.distribution.entity.ProEntity;
 import com.distribution.service.GoodsService;
 
 import yjj.common.util.Excel;
+import yjj.springSecurity.util.Session;
 
 @Controller
 @RequestMapping(value="goodsManager")
@@ -38,7 +46,7 @@ public class GoodsManagerController extends DistributionBaseController{
 	}
 	
 	@RequestMapping(value="showBuy")
-	public String showBuy(){
+	public String showBuy(Model model){
 		logger.info("打开进货页面");
 		return folder() + "goodsManagerShowBuy";
 	}
@@ -52,6 +60,7 @@ public class GoodsManagerController extends DistributionBaseController{
             if(excel_upload.isEmpty()){  
             	logger.info("文件未上传");
             }else{ 
+            	logger.info("{}提交:",new Session().getName());
             	logger.info("文件长度: {}",excel_upload.getSize());
             	logger.info("文件类型: {}",excel_upload.getContentType());
             	logger.info("文件名称: {}",excel_upload.getName());
@@ -97,4 +106,27 @@ public class GoodsManagerController extends DistributionBaseController{
         
         return "uploadSuccess";
     }  
+	
+	@RequestMapping(value="getPro")
+	@ResponseBody
+	public List<ProEntity> getPro(){
+		return goodsService.getPro();
+	}
+	
+	@RequestMapping(value="buy")
+	@ResponseBody
+	public String buy(HttpServletRequest request, HttpServletResponse response){
+		List<Map<String,String>> list = new ArrayList<Map<String,String>>();
+		for(int i = 1 ;; i++){
+			Map<String,String> buy = new HashMap<String,String>();
+			buy.put("org_id", request.getParameter("inv_id") + "");
+			buy.put("pro_id", request.getParameter("pro_id" + i) + "");
+			buy.put("inv_qty", request.getParameter("inv_qty" + i) + "");
+			list.add(buy);
+			if(request.getParameter("pro_id" + (i+1)) == null){break;}
+		}
+		logger.info(list.toString());
+		goodsService.buy(list);
+		return "";
+	}
 }

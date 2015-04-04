@@ -15,4 +15,12 @@
 			from dual
      	</foreach>
 	</insert>
+	
+	
+	<select id="getPro" resultType="ProEntity">
+		select t.pro_id,pro_nm
+		from pro_info t
+	</select>
+	
+	
 </mapper>

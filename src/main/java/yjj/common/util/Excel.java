@@ -64,7 +64,8 @@ public class Excel {
 	
 	@Test
 	public void test(){
-		String str = readFromXLS2003("/Users/yinjianjun/Workspaces/demo.XLS").toString();
+		//String str = readFromXLS2003("/Users/yinjianjun/Workspaces/demo.XLS").toString();
+		String str = readFromXLS2003("/Users/yinjianjun/Workspaces/2.xls").toString();
 		System.out.println(str);
 	}
 }
