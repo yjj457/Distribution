@@ -21,6 +21,7 @@
 	  	/WEB-INF/applicationContext.xml
 	  	/WEB-INF/spring-mybatis.xml
 	  	/WEB-INF/spring-security.xml
+	  	/WEB-INF/spring-quartz.xml
 	  </param-value>
 	</context-param>
 	
@@ -45,7 +46,6 @@
 	  <servlet-name>DruidStatView</servlet-name>
 	  <url-pattern>/druid/*</url-pattern>
 	</servlet-mapping>
-	
 	
 	<welcome-file-list>
 	  <welcome-file>index.jsp</welcome-file>
