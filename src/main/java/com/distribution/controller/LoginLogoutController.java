@@ -1,16 +1,19 @@
 package com.distribution.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.distribution.dao.UserMapper;
+import com.distribution.entity.TableReport;
 import com.distribution.entity.UserEntity;
 
 @Controller
@@ -20,7 +23,7 @@ public class LoginLogoutController {
 	
 	@Autowired
 	private UserMapper userMapper;
-	
+
 	/**
 	 * 指向登录页面
 	 */

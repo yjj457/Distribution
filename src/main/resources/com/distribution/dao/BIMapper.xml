@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.distribution.dao.BIMapper">
+	<select id="getTableReport" parameterType="String" resultType="TableReport">
+		select t1.sal_qty,t1.sal_amt,t1.sal_prm,t1.inv_qty,t2.pro_nm,t3.org_nm,t4.brd_nm,t5.cate_nm
+		from fact_pro_inv_allinfo t1,
+		     dim_pro_allinfo t2,
+		     dim_org_allinfo t3,
+		     dim_brd_allinfo t4,
+		     dim_cate_allinfo t5
+		where t1.pro_id=t2.pro_id
+		      and t1.org_id=t3.org_id
+		      and t1.brd_id=t4.brd_id
+		      and t1.cate_id=t5.cate_id
+		      and t1.pdate=#{pdate}
+	</select>
+
+	<select id="getTotalSalAmt" resultType="java.lang.String">
+		select sum(t1.sal_amt) 
+		from fact_pro_inv_allinfo t1
+	</select>
+	
+</mapper>

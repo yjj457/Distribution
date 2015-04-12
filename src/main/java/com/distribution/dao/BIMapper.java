@@ -9,10 +9,13 @@ public interface BIMapper {
 	 * 表格报表
 	 * @return
 	 */
-	public List<TableReport> getTableReport();
+	public List<TableReport> getTableReport(String pdate);
 	
-	
-	
+	/**
+	 * 获取销售总量
+	 * @return
+	 */
+	public String getTotalSalAmt();
 	
 	
 }

@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.distribution.entity.OrgInvEntity;
 import com.distribution.entity.ProEntity;
+import com.distribution.entity.TableReport;
 import com.distribution.service.GoodsService;
 
 import yjj.common.util.Excel;
@@ -38,6 +39,7 @@ public class GoodsManagerController extends DistributionBaseController{
 	
 	@Autowired
 	private GoodsService goodsService;
+	
 	
 	@RequestMapping(value="showManage")
 	public String showManage(){

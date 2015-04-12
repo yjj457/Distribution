@@ -40,7 +40,7 @@ public class ShopService {
 			logger.info("service:{}",proInfo.get("ord_id"));
 			
 			//销售才改变库存 退货不改变库存
-			if(Integer.parseInt((String) proInfo.get("sal_qty")) > 0) 
+			if((Integer) proInfo.get("sal_qty") > 0) 
 				orgInvMapper.updateOrgSal(proInfo);
 		}
 		
@@ -62,6 +62,7 @@ public class ShopService {
 		return orderMapper.getOrder(org_id);
 	}
 
+	@Transactional
 	public void shopAdd(Map<String,String> goods){
 		orgInvMapper.shopAdd(goods);
 	}

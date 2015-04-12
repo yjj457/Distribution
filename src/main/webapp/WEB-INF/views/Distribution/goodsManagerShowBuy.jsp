@@ -33,7 +33,8 @@
             data: $("form").serialize(),
             dataType : "html",
             success: function(data){
-
+            	$("input[name^='inv_qty']").val("");
+				alert("进货成功");
             }
         });
 	}

@@ -112,7 +112,7 @@ public class ShopController extends DistributionBaseController{
 	 */
 	private String doProduct(String status,HttpServletRequest request, HttpServletResponse response){
 		//获取订(退)单号
-		String ord_id = request.getParameter("org_id") + new Date().getDateyyyyMMdd() + shopService.getOrder(request.getParameter("org_id"));
+		String ord_id = request.getParameter("org_id") + Date.getDateyyyyMMdd() + shopService.getOrder(request.getParameter("org_id"));
 		logger.info("销售！:{}",ord_id);
 		ArrayList<HashMap<String, Object>> proInfos = new ArrayList<HashMap<String, Object>>();
 		for(int i=1;;i++){
@@ -122,9 +122,9 @@ public class ShopController extends DistributionBaseController{
 			proInfo.put("pro_id", request.getParameter("pro_id" + i) + "");
 		//	proInfo.put("pro_nm", request.getParameter("pro_nm" + i) + "");
 			if(status.equals("-"))
-				proInfo.put("sal_qty", Integer.parseInt(request.getParameter("sal_qty" + i) + ""));
-			else
 				proInfo.put("sal_qty", (0 - Integer.parseInt(request.getParameter("sal_qty" + i)) + ""));
+			else
+				proInfo.put("sal_qty", Integer.parseInt(request.getParameter("sal_qty" + i) + ""));
 			proInfo.put("sal_amt", Integer.parseInt(request.getParameter("sal_amt" + i) + ""));
 			proInfos.add(proInfo);
 			logger.info("{}:{},{},{},{}",request.getParameter("org_id"),request.getParameter("pro_id" + i),request.getParameter("pro_nm" + i),request.getParameter("sal_qty" + i),request.getParameter("sal_amt" + i));

@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import org.junit.Test;
 
 public class Date {
-	public String getDateyyyyMMdd(){
+	public static String getDateyyyyMMdd(){
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 		return format.format(new java.util.Date()).toString();
 	}
